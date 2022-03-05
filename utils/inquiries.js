@@ -1,0 +1,135 @@
+const getStuff = require('./getStuff')
+
+const makeDepartmentList = function() {
+    console.log(getStuff.getDepartments());
+};
+
+const makeManagerList = function() {
+    console.log(getStuff.getManagers() + 'NONE');
+};
+
+const makeRoleList = function() {
+    console.log(getStuff.getRoles());
+};
+
+const makeEmployeeList = function() {
+    console.log(getStuff.getEmployees());
+};
+
+const cMstart = [{
+    type: 'list',
+    name: 'start',
+    message: 'What would you like to do?',
+    choices: ['View Something', 'Add Something', 'Update/Remove Something']
+}];
+
+const cMView = [{
+    type: 'list',
+    name: 'view',
+    message: 'What would you like to see?',
+    choices: [
+        'View All Departments',
+        'View All Departments Salary Budget',
+        'View All Managers',
+        'Veiw All Managers Salary Budget',
+        'View All Roles',
+        'View All Roles Salary Budget',
+        'View All Employees',
+        'View All Employees By Salary',
+        'View Employees by Manager',
+        'View Employees by Department'
+    ]
+}];
+
+const cMAdd = [{
+    type: 'list',
+    name: 'add',
+    message: 'What would you like to add?',
+    choices: [
+        'Add Department',
+        'Add Role',
+        'Add Employee'
+    ]
+}];
+
+const cMUpdate = [{
+    type: 'list',
+    name: 'update',
+    message: 'What would you like to update?',
+    choices: [
+        'Update Department',
+        'Update Employee',
+        'Remove Department',
+        'Remove Employee',
+        'Self-Destruct Button'
+    ]
+}];
+
+const cMUpdate = [{
+    type: 'list',
+    name: 'update',
+    message: 'What would you like to update?',
+    choices: [
+        'Update Department',
+        'Update Role',
+        'Update Employee',
+        'Remove Department',
+        'Remove Employee',
+        'Self-Destruct Button'
+    ]
+}];
+
+const cMAddDepartment = [{
+    type: 'text',
+    name: 'new-department',
+    message: 'What is the name of the new department?'
+}];
+
+const cMAddRole = [{
+        type: 'text',
+        name: 'new-role',
+        message: 'What is the name of the new role?'
+    },
+    {
+        type: 'number',
+        name: 'new-role-salary',
+        message: 'What is the salary of the new role?'
+    },
+    {
+        type: 'list',
+        name: 'new-role-department',
+        message: 'What department does this role belong to?',
+        choices: [makeDepartmentList()]
+    }
+];
+
+const cMAddEmployee = [{
+        type: 'text',
+        name: 'new-employee-first-name',
+        message: 'What is the first name of the new employee?'
+    },
+    {
+        type: 'text',
+        name: 'new-employee-last-name',
+        message: 'What is the last name of the new employee?'
+    },
+    {
+        type: 'list',
+        name: 'new-employee-role',
+        message: 'What is the role of the new employee?',
+        choices: [makeRoleList()]
+    },
+    {
+        type: 'list',
+        name: 'new-employee-manager',
+        message: 'Who is the manager of the new employee?',
+        choices: [makeManagerList()]
+    }
+];
+
+const cMUpdateEmployee = [{
+        type: 'list',
+        name: 'update-employee',
+        message: 'Which Employee would you like to update?',
+        choices: [makeEmployeeList()]
+}];
