@@ -1,63 +1,72 @@
 INSERT INTO department
     (name)
 VALUES
+    ('executive'),
     ('horology'),
     ('ontology'),
     ('planting'),
     ('gleaning'),
     ('janitorial'),
     ('research and development'),
-    ('off book'),
-    ('director');
+    ('off book');
+
+INSERT INTO management
+    (title, salary, department_id)
+VALUES
+    ('director', 3000000, 1),
+    ('director of horology', 380000, 2),
+    ('existing onotologist', 300000, 3),
+    ('cheif botanist', 600000, 4),
+    ('pickerery', 140000, 5),
+    ('cultural janitor', 160000, 6),
+    ('director of shenanigans', 500000, 7),
+    ('consultantation', 38000000, 8);
+
+INSERT INTO manager
+    (first_name, last_name, management_id)
+VALUES
+    ('Aja', 'Monk', 1),
+    ('Mud', 'Cearly', 2),
+    ('Begget', 'Bar', 3),
+    ('Parson', 'Erith', 4),
+    ('Ella', 'Fugata', 5),
+    ('Manga', 'Tellahson', 6),
+    ('Maria', 'Martine', 7),
+    ('Sly', 'Familystone', 8);
 
 INSERT INTO role
-    (manager, title, salary, department)
+    (title, salary, department_worker_id)
 VALUES 
-    (121, 'director of horology', 380000, 1),
-    (null, 'experimental horologist', 300000, 1),
-    (null, 'horological intern', 120000, 1),
-    (122, 'existing onotologist', 300000, 2),
-    (null, 'potentialists', 280000, 2),
-    (null, 'schrödingerean felines', 120000, 2),
-    (123, 'cheif botanist', 600000, 3),
-    (null, 'botanical specialism', 400000, 3),
-    (null, 'botanical generalism', 450000, 3),
-    (null, 'plant whispering', 280000, 3),
-    (null, 'pickerery', 140000, 4),
-    (124, 'cultural janitor', 160000, 5),
-    (null, 'cleaners', 200000, 5),
-    (null, 'plumbing', 300000, 5),
-    (null, 'electric', 300000, 5),
-    (125, 'director of shenanigans', 500000, 6),
-    (null, 'assistant to the DOS', 250000, 6),
-    (null, 'assistant DOS', 350000, 6),
-    (126, 'consultantation', 38000000, 7),
-    (null, 'agent consultantationists', 8000000, 7),
-    (363, 'director', 3000000, 8);
+    ('experimental horologist', 300000, 2),
+    ('horological intern', 120000, 2),
+    ('existing onotologist', 300000, 3),
+    ('potentialists', 280000, 3),
+    ('schrödingerean felines', 120000, 3),
+    ('botanical specialism', 400000, 4),
+    ('botanical generalism', 450000, 4),
+    ('plant whispering', 280000, 4),
+    ('cleaners', 200000, 6),
+    ('plumbing', 300000, 6),
+    ('electric', 300000, 6),
+    ('assistant to the DOS', 250000, 7),
+    ('assistant DOS', 350000, 7),
+    ('agent consultantationists', 8000000, 8);
 
 INSERT INTO employee
     (first_name, last_name, role_id, manager_id)
 VALUES
-    ('Aja', 'Monk', 21, 363),
-    ('Mud', 'Cearly', 1, 363),
-    ('Xana', 'Parsol', 4, 363),
-    ('Olga', 'Therin', 7, 363),
-    ('Begget', 'Bar', 12, 363),
-    ('Reed', 'Ragged', 16, 363),
-    ('Oryn', 'Maja', 19, 363),
-    ('Parson', 'Erith', 2, 121),
-    ('Morana', 'Kays', 3, 121),
-    ('Porro', 'Fuga', 5, 122),
-    ('Ella', 'Fugata', 5, 122),
-    ('Rama', 'Querra', 6, 122),
-    ('Portia', 'Guy', 8, 123),
-    ('Manga', 'Tellahson', 9, 123),
-    ('Zek', 'Alegro', 9, 123),
-    ('Groo', 'Leone', 10, 123),
-    ('Hunta', 'Thena', 11, 123),
-    ('Maria', 'Martine', 13, 124),
-    ('Caixo', 'Brint', 14, 124),
-    ('Sela', 'Sese', 15, 124),
-    ('Sly', 'Familystone', 17, 125),
-    ('Natasha', 'Zhou', 18, 125),
-    ('Greg', 'Cousins', 20, 126);
+    ('Xana', 'Parsol', 1, 2),
+    ('Olga', 'Therin', 2, 2),
+    ('Reed', 'Ragged', 3, 3),
+    ('Oryn', 'Maja', 4, 3),
+    ('Morana', 'Kays', 5, 4),
+    ('Porro', 'Fuga', 6, 4),
+    ('Rama', 'Querra', 7, 4),
+    ('Portia', 'Guy', 8, 4),
+    ('Zek', 'Alegro', 9, 6),
+    ('Groo', 'Leone', 10, 6),
+    ('Hunta', 'Thena', 11, 6),
+    ('Caixo', 'Brint', 12, 7),
+    ('Sela', 'Sese', 13, 7),
+    ('Natasha', 'Zhou', 14, 8),
+    ('Greg', 'Cousins', 14, 8);
