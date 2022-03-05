@@ -16,7 +16,7 @@ const makeEmployeeList = function() {
     console.log(getStuff.getEmployees());
 };
 
-const cMstart = [{
+const cMStart = [{
     type: 'list',
     name: 'start',
     message: 'What would you like to do?',
@@ -57,21 +57,7 @@ const cMUpdate = [{
     name: 'update',
     message: 'What would you like to update?',
     choices: [
-        'Update Department',
-        'Update Employee',
-        'Remove Department',
-        'Remove Employee',
-        'Self-Destruct Button'
-    ]
-}];
-
-const cMUpdate = [{
-    type: 'list',
-    name: 'update',
-    message: 'What would you like to update?',
-    choices: [
-        'Update Department',
-        'Update Role',
+        'Update Roll',
         'Update Employee',
         'Remove Department',
         'Remove Employee',
@@ -127,9 +113,31 @@ const cMAddEmployee = [{
     }
 ];
 
+//expand once working
+const cMUpdateRole = [{
+        type: 'list',
+        name: 'update-role',
+        message: 'Which role would you like to update?',
+        choices: [makeRoleList()]
+}]
+
+//expand once working
 const cMUpdateEmployee = [{
         type: 'list',
         name: 'update-employee',
         message: 'Which Employee would you like to update?',
         choices: [makeEmployeeList()]
 }];
+
+module.exports = {
+    cMStart,
+    cMView,
+    cMAdd,
+    cMUpdate,
+    cMAddDepartment,
+    cMAddRole,
+    cMAddEmployee,
+    cMUpdate,
+    cMUpdateRole,
+    cMUpdateEmployee
+};
