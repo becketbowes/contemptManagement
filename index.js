@@ -1,7 +1,37 @@
-const cTable = require('console.table');
-const mysql = require('mysql2');
-var inquirer = require('inquirer');
-const db = require('./db/connection');
+const inquirer = require('inquirer');
+const { cMStart } = require('./utils/inquiries');
+const viewThings = require('./lib/view');
+const addThings = require('./lib/add');
+const updateThings = require('./lib/update');
+
+const cMInterface = function() {
+    inquirer
+        .prompt(cMStart)
+        .then((data) => {
+            if (data.start === 'View Something') {
+                viewThings();
+            } else if (data.start === 'Add Something') {
+                addThings();
+            } else {
+                updateThings();
+            }
+        })
+        .catch ((err) => {
+            if (err) {console.log(err)}
+        });
+};
+
+cMInterface();
+
+
+
+
+
+
+// const cTable = require('console.table');
+// const mysql = require('mysql2');
+// var inquirer = require('inquirer');
+// const db = require('./db/connection');
 
 // console.table example:
 // console.table([
