@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS role;
 DROP TABLE IF EXISTS employee;
 
 CREATE TABLE department (
-    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER AUTO_INCREMENT PRIMA
     name VARCHAR(30) NOT NULL
 );
 
@@ -30,7 +30,6 @@ CREATE TABLE role (
     department_worker_id INTEGER NOT NULL,
     CONSTRAINT fk_department_worker_id FOREIGN KEY (department_worker_id) REFERENCES department(id) ON DELETE CASCADE
 );
-
 
 CREATE TABLE employee (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
