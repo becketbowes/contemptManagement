@@ -1,35 +1,42 @@
-const getStuff = require('./getStuff')
+const db = require("../db/connection");
 
+const departmentChoices = [];
 const makeDepartmentList = function() {
-    //api call : api/departments
     const reformatDepartments = function(rows) {
-        const inqChoices = [];
         for (i = 0; i < rows.length; i++) {
             const inqChoice = `${rows[i].id}, ${rows[i].name}`;
-            inqChoice.push(inqChoices);
+            departmentChoices.push(inqChoice);
         };
-        console.log(inqChoices);
-        return inqChoices;
+        return departmentChoices;
     };
 
-    console.log(getStuff.getDepartments());
-};
+    const sql = `SELECT * FROM department`;
 
-const makeManagementList = function() {
-    console.log(getStuff.getManagers());
+    db.query(sql, (err, rows) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        rows => JSON.parse(rows);
+        reformatDepartments(rows);
+    });
 };
+makeDepartmentList();
+// const makeManagementList = function() {
+//     console.log(getStuff.getManagers());
+// };
 
-const makeManagerList = function() {
-    console.log(getStuff.getManagers());
-};
+// const makeManagerList = function() {
+//     console.log(getStuff.getManagers());
+// };
 
-const makeRoleList = function() {
-    console.log(getStuff.getRoles());
-};
+// const makeRoleList = function() {
+//     console.log(getStuff.getRoles());
+// };
 
-const makeEmployeeList = function() {
-    console.log(getStuff.getEmployees());
-};
+// const makeEmployeeList = function() {
+//     console.log(getStuff.getEmployees());
+// };
 
 const cMStart = [{
     type: 'list',
@@ -67,18 +74,18 @@ const cMAdd = [{
     ]
 }];
 
-const cMUpdate = [{
-    type: 'list',
-    name: 'update',
-    message: 'What would you like to update?',
-    choices: [
-        'Update Roll',
-        'Update Employee',
-        'Remove Department',
-        'Remove Employee',
-        'Self-Destruct Button'
-    ]
-}];
+// const cMUpdate = [{
+//     type: 'list',
+//     name: 'update',
+//     message: 'What would you like to update?',
+//     choices: [
+//         'Update Roll',
+//         'Update Employee',
+//         'Remove Department',
+//         'Remove Employee',
+//         'Self-Destruct Button'
+//     ]
+// }];
 
 const cMAddDepartment = [{
     type: 'text',
@@ -100,7 +107,7 @@ const cMAddRole = [{
         type: 'list',
         name: 'new-role-department',
         message: 'What department does this role belong to?',
-        choices: [makeDepartmentList()]
+        choices: departmentChoices
     },
     {
         type: 'list',
@@ -110,72 +117,72 @@ const cMAddRole = [{
     }
 ];
 
-const cMAddManager = [{
-    type: 'text',
-    name: 'new-employee-first-name',
-    message: 'What is the first name of the new employee?'
-},
-{
-    type: 'text',
-    name: 'new-employee-last-name',
-    message: 'What is the last name of the new employee?'
-},
-{
-    type: 'list',
-    name: 'new-employee-role',
-    message: 'What is the role of the new employee?',
-    choices: [makeManagementList()]
-},
-];
+// const cMAddManager = [{
+//     type: 'text',
+//     name: 'new-employee-first-name',
+//     message: 'What is the first name of the new employee?'
+// },
+// {
+//     type: 'text',
+//     name: 'new-employee-last-name',
+//     message: 'What is the last name of the new employee?'
+// },
+// {
+//     type: 'list',
+//     name: 'new-employee-role',
+//     message: 'What is the role of the new employee?',
+//     choices: [makeManagementList()]
+// },
+// ];
 
-const cMAddEmployee = [{
-        type: 'text',
-        name: 'new-employee-first-name',
-        message: 'What is the first name of the new employee?'
-    },
-    {
-        type: 'text',
-        name: 'new-employee-last-name',
-        message: 'What is the last name of the new employee?'
-    },
-    {
-        type: 'list',
-        name: 'new-employee-role',
-        message: 'What is the role of the new employee?',
-        choices: [makeRoleList()]
-    },
-    {
-        type: 'list',
-        name: 'new-employee-manager',
-        message: 'Who is the manager of the new employee?',
-        choices: [makeManagerList()]
-    }
-];
+// const cMAddEmployee = [{
+//         type: 'text',
+//         name: 'new-employee-first-name',
+//         message: 'What is the first name of the new employee?'
+//     },
+//     {
+//         type: 'text',
+//         name: 'new-employee-last-name',
+//         message: 'What is the last name of the new employee?'
+//     },
+//     {
+//         type: 'list',
+//         name: 'new-employee-role',
+//         message: 'What is the role of the new employee?',
+//         choices: [makeRoleList()]
+//     },
+//     {
+//         type: 'list',
+//         name: 'new-employee-manager',
+//         message: 'Who is the manager of the new employee?',
+//         choices: [makeManagerList()]
+//     }
+// ];
 
-//expand once working
-const cMUpdateRole = [{
-        type: 'list',
-        name: 'update-role',
-        message: 'Which role would you like to update?',
-        choices: [makeRoleList()]
-}]
+// //expand once working
+// const cMUpdateRole = [{
+//         type: 'list',
+//         name: 'update-role',
+//         message: 'Which role would you like to update?',
+//         choices: [makeRoleList()]
+// }]
 
-//expand once working
-const cMUpdateEmployee = [{
-        type: 'list',
-        name: 'update-employee',
-        message: 'Which Employee would you like to update?',
-        choices: [makeEmployeeList()]
-}];
+// //expand once working
+// const cMUpdateEmployee = [{
+//         type: 'list',
+//         name: 'update-employee',
+//         message: 'Which Employee would you like to update?',
+//         choices: [makeEmployeeList()]
+// }];
 
 module.exports = {
     cMStart,
     cMView,
     cMAdd,
-    cMUpdate,
+    // cMUpdate,
     cMAddDepartment,
     cMAddRole,
-    cMAddEmployee,
-    cMUpdateRole,
-    cMUpdateEmployee
+    // cMAddEmployee,
+    // cMUpdateRole,
+    // cMUpdateEmployee
 };
