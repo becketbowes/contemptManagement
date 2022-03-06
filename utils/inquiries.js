@@ -1,27 +1,36 @@
-const db = require("../db/connection");
+const { departmentChoices, 
+        managementChoices, 
+        managerChoices, 
+        roleChoices, 
+        employeeChoices } = require('./varInquiries')
 
-const departmentChoices = [];
-const makeDepartmentList = function() {
-    const reformatDepartments = function(rows) {
-        for (i = 0; i < rows.length; i++) {
-            const inqChoice = `${rows[i].id}, ${rows[i].name}`;
-            departmentChoices.push(inqChoice);
-        };
-        return departmentChoices;
-    };
+//variable choice lists from the database, reformatted for inquirer:
+// const departmentChoices = [];
+// const managmentChoices = [];
+// const managerChoices = [];
+// const roleChoices = [];
+// const employeeChoices = [];
 
-    const sql = `SELECT * FROM department`;
+// const makeDepartmentList = function() {
+//     const reformatDepartments = function(rows) {
+//         for (i = 0; i < rows.length; i++) {
+//             const inqChoice = `${rows[i].id}, ${rows[i].name}`;
+//             departmentChoices.push(inqChoice);
+//         };
+//         return departmentChoices;
+//     };
 
-    db.query(sql, (err, rows) => {
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
-        rows => JSON.parse(rows);
-        reformatDepartments(rows);
-    });
-};
-makeDepartmentList();
+//     const sql = `SELECT * FROM department`;
+//     db.query(sql, (err, rows) => {
+//         if (err) {
+//             res.status(500).json({ error: err.message });
+//             return;
+//         }
+//         rows => JSON.parse(rows);
+//         reformatDepartments(rows);
+//     });
+// };
+// makeDepartmentList();
 // const makeManagementList = function() {
 //     console.log(getStuff.getManagers());
 // };
@@ -74,18 +83,18 @@ const cMAdd = [{
     ]
 }];
 
-// const cMUpdate = [{
-//     type: 'list',
-//     name: 'update',
-//     message: 'What would you like to update?',
-//     choices: [
-//         'Update Roll',
-//         'Update Employee',
-//         'Remove Department',
-//         'Remove Employee',
-//         'Self-Destruct Button'
-//     ]
-// }];
+const cMUpdate = [{
+    type: 'list',
+    name: 'update',
+    message: 'What would you like to update?',
+    choices: [
+        'Update Roll',
+        'Update Employee',
+        'Remove Department',
+        'Remove Employee',
+        'Self-Destruct Button'
+    ]
+}];
 
 const cMAddDepartment = [{
     type: 'text',
@@ -117,72 +126,73 @@ const cMAddRole = [{
     }
 ];
 
-// const cMAddManager = [{
-//     type: 'text',
-//     name: 'new-employee-first-name',
-//     message: 'What is the first name of the new employee?'
-// },
-// {
-//     type: 'text',
-//     name: 'new-employee-last-name',
-//     message: 'What is the last name of the new employee?'
-// },
-// {
-//     type: 'list',
-//     name: 'new-employee-role',
-//     message: 'What is the role of the new employee?',
-//     choices: [makeManagementList()]
-// },
-// ];
+const cMAddManager = [{
+    type: 'text',
+    name: 'new-employee-first-name',
+    message: 'What is the first name of the new employee?'
+},
+{
+    type: 'text',
+    name: 'new-employee-last-name',
+    message: 'What is the last name of the new employee?'
+},
+{
+    type: 'list',
+    name: 'new-employee-role',
+    message: 'What is the role of the new employee?',
+    choices: managementChoices
+},
+];
 
-// const cMAddEmployee = [{
-//         type: 'text',
-//         name: 'new-employee-first-name',
-//         message: 'What is the first name of the new employee?'
-//     },
-//     {
-//         type: 'text',
-//         name: 'new-employee-last-name',
-//         message: 'What is the last name of the new employee?'
-//     },
-//     {
-//         type: 'list',
-//         name: 'new-employee-role',
-//         message: 'What is the role of the new employee?',
-//         choices: [makeRoleList()]
-//     },
-//     {
-//         type: 'list',
-//         name: 'new-employee-manager',
-//         message: 'Who is the manager of the new employee?',
-//         choices: [makeManagerList()]
-//     }
-// ];
+const cMAddEmployee = [{
+        type: 'text',
+        name: 'new-employee-first-name',
+        message: 'What is the first name of the new employee?'
+    },
+    {
+        type: 'text',
+        name: 'new-employee-last-name',
+        message: 'What is the last name of the new employee?'
+    },
+    {
+        type: 'list',
+        name: 'new-employee-role',
+        message: 'What is the role of the new employee?',
+        choices: roleChoices
+    },
+    {
+        type: 'list',
+        name: 'new-employee-manager',
+        message: 'Who is the manager of the new employee?',
+        choices: managerChoices
+    }
+];
 
-// //expand once working
-// const cMUpdateRole = [{
-//         type: 'list',
-//         name: 'update-role',
-//         message: 'Which role would you like to update?',
-//         choices: [makeRoleList()]
-// }]
+//expand once working
+const cMUpdateRole = [{
+        type: 'list',
+        name: 'update-role',
+        message: 'Which role would you like to update?',
+        choices: roleChoices
+}]
 
-// //expand once working
-// const cMUpdateEmployee = [{
-//         type: 'list',
-//         name: 'update-employee',
-//         message: 'Which Employee would you like to update?',
-//         choices: [makeEmployeeList()]
-// }];
+//expand once working
+const cMUpdateEmployee = [{
+        type: 'list',
+        name: 'update-employee',
+        message: 'Which Employee would you like to update?',
+        choices: employeeChoices
+}];
 
 module.exports = {
     cMStart,
     cMView,
     cMAdd,
-    // cMUpdate,
+    cMUpdate,
     cMAddDepartment,
     cMAddRole,
-    // cMAddEmployee,
-    // cMUpdateRole,
-    // cMUpdateEmployee
+    cMAddManager,
+    cMAddEmployee,
+    cMUpdateRole,
+    cMUpdateEmployee
 };
