@@ -79,6 +79,7 @@ const cMAdd = [{
     choices: [
         'Add Department',
         'Add Role',
+        'Add Manager',
         'Add Employee'
     ]
 }];
@@ -128,18 +129,18 @@ const cMAddRole = [{
 
 const cMAddManager = [{
     type: 'text',
-    name: 'new-employee-first-name',
-    message: 'What is the first name of the new employee?'
+    name: 'new-manager-first-name',
+    message: 'What is the first name of the new manager?'
 },
 {
     type: 'text',
-    name: 'new-employee-last-name',
-    message: 'What is the last name of the new employee?'
+    name: 'new-manager-last-name',
+    message: 'What is the last name of the new manager?'
 },
 {
     type: 'list',
-    name: 'new-employee-role',
-    message: 'What is the role of the new employee?',
+    name: 'new-manager-role',
+    message: 'What is the role of the new manager?',
     choices: managementChoices
 },
 ];
