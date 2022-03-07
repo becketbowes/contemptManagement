@@ -99,29 +99,29 @@ const cMUpdate = [{
 
 const cMAddDepartment = [{
     type: 'text',
-    name: 'new-department',
+    name: 'new_department',
     message: 'What is the name of the new department?'
 }];
 
 const cMAddRole = [{
         type: 'text',
-        name: 'new-role',
+        name: 'new_role',
         message: 'What is the name of the new role?'
     },
     {
         type: 'number',
-        name: 'new-role-salary',
+        name: 'new_role_salary',
         message: 'What is the salary of the new role?'
     },
     {
         type: 'list',
-        name: 'new-role-department',
+        name: 'new_role_department',
         message: 'What department does this role belong to?',
         choices: departmentChoices
     },
     {
         type: 'list',
-        name: 'new-role-department',
+        name: 'manager_or_not',
         message: 'Is this a managerial position?',
         choices: ['YES', 'NO']
     }
@@ -129,17 +129,17 @@ const cMAddRole = [{
 
 const cMAddManager = [{
     type: 'text',
-    name: 'new-manager-first-name',
+    name: 'new_manager_firstname',
     message: 'What is the first name of the new manager?'
 },
 {
     type: 'text',
-    name: 'new-manager-last-name',
+    name: 'new_manager_lastname',
     message: 'What is the last name of the new manager?'
 },
 {
     type: 'list',
-    name: 'new-manager-role',
+    name: 'new_manager_role',
     message: 'What is the role of the new manager?',
     choices: managementChoices
 },
@@ -147,23 +147,23 @@ const cMAddManager = [{
 
 const cMAddEmployee = [{
         type: 'text',
-        name: 'new-employee-first-name',
+        name: 'new_employee_firstname',
         message: 'What is the first name of the new employee?'
     },
     {
         type: 'text',
-        name: 'new-employee-last-name',
+        name: 'new_employee_lastname',
         message: 'What is the last name of the new employee?'
     },
     {
         type: 'list',
-        name: 'new-employee-role',
+        name: 'new_employee_role',
         message: 'What is the role of the new employee?',
         choices: roleChoices
     },
     {
         type: 'list',
-        name: 'new-employee-manager',
+        name: 'new_employee_manager',
         message: 'Who is the manager of the new employee?',
         choices: managerChoices
     }

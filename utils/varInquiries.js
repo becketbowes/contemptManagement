@@ -71,7 +71,7 @@ const makeManagerList = function() {
 const makeRoleList = function() {
     const reformatRoles = function(rows) {
         for (i = 0; i < rows.length; i++) {
-            const inqChoice = `${rows[i].id}, ${rows[i].name}`;
+            const inqChoice = `${rows[i].id}, ${rows[i].title}`;
             roleChoices.push(inqChoice);
         };
     };
@@ -90,7 +90,7 @@ const makeRoleList = function() {
 const makeEmployeeList = function() {
     const reformatEmployee = function(rows) {
         for (i = 0; i < rows.length; i++) {
-            const inqChoice = `${rows[i].id}, ${rows[i].first_name} ${rows[i].last_name}, ${rows[i].title}`;
+            const inqChoice = `${rows[i].id}, ${rows[i].first_name} ${rows[i].last_name}: ${rows[i].title}`;
             employeeChoices.push(inqChoice);
         };
     };
